@@ -30,54 +30,16 @@ int main() {
     cout << countZeroSum << endl;
 }
 
-    /*
-    5
-    2 -2 3 -3 4
-
-    output : 3
-    */
-
-
-
-
-
-//Task: Count number of subarrays whose sum is�exactly�K
-
 /*
+5
+2 -2 3 -3 4
 
-#include <bits/stdc++.h>
-using namespace std;
-
-int main() {
-    int n, k;
-    cin >> n >> k;
-
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
-
-    long long prefix = 0, ans = 0;
-    unordered_map<long long, long long> freq;
-
-    freq[0] = 1;
-
-    for (int x : a) {
-        prefix += x;
-
-        ans += freq[prefix - k];
-
-        freq[prefix]++;
-    }
-
-    cout << ans << endl;
-}
-
- input : 6 5
-       1 2 3 2 -1 2
+output : 3
 */
 
 
 
-
+    
 //Task: Subarray sum queries 
 
 /*
@@ -122,3 +84,44 @@ Output:
 9
 15
 */
+
+
+
+
+
+//Task: Count number of subarrays whose sum is�exactly�K
+
+/*
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, k;
+    cin >> n >> k;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    long long prefix = 0, ans = 0;
+    unordered_map<long long, long long> freq;
+
+    freq[0] = 1;
+
+    for (int x : a) {
+        prefix += x;
+
+        ans += freq[prefix - k];
+
+        freq[prefix]++;
+    }
+
+    cout << ans << endl;
+}
+
+ input : 6 5
+       1 2 3 2 -1 2
+*/
+
+
+
