@@ -1,32 +1,63 @@
+// what is base^power modulo m?
+
 #include <bits/stdc++.h>
 using namespace std;
-
-long long bigmod(long long a, long long b, long long mod) {
-    long long result = 1;
-    a %= mod;
-
-    while (b > 0) {
-        if (b & 1)
-            result = (result * a) % mod;
-
-        a = (a * a) % mod;
-        b >>= 1;
+int big_mod(int base, int power, int mod)
+{
+    if (power == 0)
+    {
+        return 1;
     }
-
-    return result;
+    else if (power % 2 == 0)
+    {
+        int p1 = (big_mod(base, power / 2, mod) % mod);
+        return (p1 * p1) % mod;
+    }
+    else
+    {
+        int p1 = base % mod;
+        int p2 = (big_mod(base, power - 1, mod)) % mod;
+        return (p1 * p2) % mod;
+    }
 }
-
-int main() {
-    long long a, b, m;
-    cin >> a >> b >> m;
-
-    cout << bigmod(a, b, m) << endl;
+int main()
+{
+    int base, power, mod;
+    cin >> base >> power >> mod;
+    cout << big_mod(base, power, mod);
     return 0;
 }
-/* 
-2 10 1000
-Output: 24  
-   */
+
+// INPUT: 2 30 11
+// OUTPUT: 1
+
+
+
+/*
+what is this big number modulo m?
+
+#include <bits/stdc++.h>
+using namespace std;
+int big_mod(string num, int mod){
+    int res = 0;
+    for(int i  = 0; i < num.size(); i++){
+        res = ( res * 10 + num[i] - '0') % mod;
+    }
+    return res;
+}
+
+int main(){
+    string num;
+    int mod;
+    cin >> num >> mod;
+    cout << big_mod(num,mod);
+    return 0;
+}
+
+//INPUT: 12316767678678
+//OUTPUT: 8
+*/
+
 
 
 
@@ -57,7 +88,6 @@ int main() {
 Problem 1:
 2 10 1000
 Output: 24
-
 
 
 
@@ -190,4 +220,3 @@ Output: 62
 
 
 */
-
